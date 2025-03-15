@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artizanat - Coș</title>
+    <link rel="stylesheet" href="/CSS/COS.css">
+    <link rel="stylesheet" href="/CSS/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="container border-nav">
+            <button class="hamburger-menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="logo">
+                <a href="/index.html">
+                    <p data-lang="footer-contact">ARTIZANAT CAHUL</p>
+                </a>
+            </div>
+        
+            <nav class="desktop-nav">
+                <ul class="left-nav">
+                    <li><a href="/index.html#about" data-lang="header-about">Despre</a></li>
+                    <li><a href="/index.html#services" data-lang="header-services">Servicii</a></li>
+                    <li><a href="/index.html#contact" data-lang="header-contact">Contacte</a></li>
+                </ul>
+                <ul class="right-nav">
+                    <li><a href="/HTML/catalog.html" data-lang="header-catalog">Catalog</a></li>
+                    <li class="cart-link">
+                        <a href="/HTML/COS.html">
+                            <img src="/Icons/COȘ.svg" alt="Coș">
+                            <span data-lang="header-cart">Coș</span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="language-selector">
+                        <img src="/Icons/GLOB.svg" alt="GLOB">
+                        <select id="language">
+                            <option value="ro">RO</option>
+                            <option value="ru">RU</option>
+                            <option value="en">EN</option>
+                        </select>
+                    </li>
+                </ul>
+            </nav>
+        
+            <div class="mobile-nav">
+                <nav>
+                    <ul>
+                        <li><a href="/index.html#about" data-lang="header-about">Despre</a></li>
+                        <li><a href="/index.html#services" data-lang="header-services">Servicii</a></li>
+                        <li><a href="/HTML/catalog.html" data-lang="header-catalog">Catalog</a></li>
+                        <li><a href="/index.html#contact" data-lang="header-contact">Contacte</a></li>
+                        <li class="cart-link">
+                            <a href="HTML/COS.html">
+                                <img src="/Icons/COȘ.svg" alt="Coș">
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                        <li class="language-selector">
+                            <img src="/Icons/GLOB.svg" alt="GLOB">
+                            <select id="language-mobile">
+                                <option value="ro">RO</option>
+                                <option value="ru">RU</option>
+                                <option value="en">EN</option>
+                            </select>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="cart-container">
+            <h1 data-lang="cart-title">My Cart</h1>
+            <div class="cart-layout">
+                <div class="cart-items">
+                    <p class="empty-cart" data-lang="cart-empty">Your cart is empty</p>
+                </div>
+                <div class="cart-actions">
+                    <div class="cart-summary">
+                        <h2 class="cart-total"><span data-lang="cart-total">Total:</span> 0.00 MDL</h2>
+                        <button class="checkout-btn" data-lang="cart-checkout">Checkout</button>
+                        <a href="../HTML/catalog.html" class="return-btn" data-lang="cart-return">Back to catalog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="orderModal" class="order-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 data-lang="modal-title">Finalizare comandă</h2>
+                <form id="orderForm" action="https://formsubmit.co/5702ed8fbd9ace1f593fb3d851b580c2" method="POST">
+                    <input type="hidden" name="_subject" value="Новый заказ - Artizanat">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="order_details" id="orderDetails">
+                    <div class="form-group">
+                        <label for="name" data-lang="modal-name">Nume Prenume *</label>
+                        <input type="text" id="name" name="name" required minlength="3" maxlength="50" placeholder="Ex. Vasile Lupu">
+                        <div class="error-message" data-lang="invalid-name"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" data-lang="modal-phone">Telefon *</label>
+                        <input type="tel" id="phone" name="phone" required pattern="[+]?[0-9]{10,15}" placeholder="Ex. +373 79 123 456">
+                        <div class="error-message" data-lang="invalid-phone"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-lang="modal-email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="Ex. VasileLupu@mail.com">
+                        <div class="error-message" data-lang="invalid-email"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" data-lang="modal-address">Adresa de livrare *</label>
+                        <input type="text" id="address" name="address" required minlength="10" placeholder="Ex. Cahul, str. 31 August 13B">
+                        <div class="error-message" data-lang="invalid-address"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments" data-lang="modal-comments">Comentarii</label>
+                        <textarea id="comments" name="comments" rows="4" placeholder="Ex. Livrare în weekend"></textarea>
+                    </div>
+                    <button type="submit" class="submit-order" data-lang="modal-confirm">Confirmă comanda</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/cart.js" defer></script>
+    <script src="/JS/animate.js" defer></script>
+</body>
+</html>

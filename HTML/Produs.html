@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Artizanat Cahul - Platouri de lemn și veselă de lut tradițională">
+    <title>Artizanat Cahul</title>
+    <link rel="stylesheet" href="/CSS/Produs.css">
+    <link rel="stylesheet" href="/CSS/main.css">
+</head>
+
+<body>
+    <header class="container border-nav">
+        <button class="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="logo">
+            <a href="/index.html">
+                <p data-lang="footer-contact">ARTIZANAT CAHUL</p>
+            </a>
+        </div>
+    
+        <nav class="desktop-nav">
+            <ul class="left-nav">
+                <li><a href="/index.html#about" data-lang="header-about">Despre</a></li>
+                <li><a href="/index.html#services" data-lang="header-services">Servicii</a></li>
+                <li><a href="/index.html#contact" data-lang="header-contact">Contacte</a></li>
+            </ul>
+            <ul class="right-nav">
+                <li><a href="/HTML/catalog.html" data-lang="header-catalog">Catalog</a></li>
+                <li class="cart-link">
+                    <a href="/HTML/COS.html">
+                        <img src="/Icons/COȘ.svg" alt="Coș">
+                        <span data-lang="header-cart">Coș</span>
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+                <li class="language-selector">
+                    <img src="/Icons/GLOB.svg" alt="GLOB">
+                    <select id="language">
+                        <option value="ro">RO</option>
+                        <option value="ru">RU</option>
+                        <option value="en">EN</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    
+        <div class="mobile-nav">
+            <nav>
+                <ul>
+                    <li><a href="/index.html#about" data-lang="header-about">Despre</a></li>
+                    <li><a href="/index.html#services" data-lang="header-services">Servicii</a></li>
+                    <li><a href="/HTML/catalog.html" data-lang="header-catalog">Catalog</a></li>
+                    <li><a href="/index.html#contact" data-lang="header-contact">Contacte</a></li>
+                    <li class="cart-link">
+                        <a href="HTML/COS.html">
+                            <img src="/Icons/COȘ.svg" alt="Coș">
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="language-selector">
+                        <img src="/Icons/GLOB.svg" alt="GLOB">
+                        <select id="language-mobile">
+                            <option value="ro">RO</option>
+                            <option value="ru">RU</option>
+                            <option value="en">EN</option>
+                        </select>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+  <div class="vizualizare">
+    
+    <div class="Produs">
+      <div class="imagini">
+        <div class="main-img">
+          <img src="/imagine/catalog/platouri/Frame 111.svg" alt="imagine">
+        </div>
+      </div>
+      
+      <div class="info">
+        <div class="text">
+            <h1 id="product-title">Platou nr.1</h1>
+            <p><span id="product-price">234,79</span> <span data-lang="product-currency">MDL</span></p>
+            <h2 data-lang="product-details">Detalii:</h2>
+            <div class="bio">
+                <p2><span data-lang="product-size">Mărime:</span> <span id="product-size">10cm x 10cm x 10cm</span></p2>
+                <p2><span data-lang="product-description">Descriere:</span> <span id="product-description">bla bla</span></p2>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <div class="counter">
+                <button type="button" class="minus" id="decrease">-</button>
+                <input type="number" id="counter-display" value="1" disabled/>
+                <button type="button" class="plus" id="increase">+</button>
+            </div>
+            <button class="buy-button" id="addToCart" data-lang="product-add">Adaugă în coș</button>
+        </div>
+    </div>
+         
+    </div> 
+
+    <div class="linked-img">
+      <div class="img-view">
+          <img src="/imagine/catalog/platouri/Frame 111.svg" alt="imagine">
+      </div>         
+    </div>        
+  </div>   
+  <script src="/JS/animate.js"></script>
+  <script src="/JS/Produs.js"></script>
+  <script src="/JS/cart.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+{
+  "produse": {
+    "Platouri": [
+      {
+        "categorie": "platouri",
+        "id": 1,
+        "nume": "Platou oval cu orificiu pentru sticlă și 4 pahare",
+        "imagine": "/imagine/catalog/platouri/Frame 111.webp",
+        "pret": "279.99 MDL",
+        "descriere": "Platou oval din stejar cu piciorușe și orificiu pentru o sticlă și 4 pahare",
+        "dimensiuni": "50cm x 30 cm",
+        "Imagini legate": "/imagine/catalog/platouri/0.webp"
+      },
+      {
+        "categorie": "platouri",
+        "id": 2,
+        "nume": "Platou inimă cu orificiu pentru sticlă și 2 pahare",
+        "imagine": "/imagine/catalog/platouri/3.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou cu piciorușe în formă de inimă cu orificiu pentru 2 pahare și o sticlă ",
+        "dimensiuni": "35cm x 35cm",
+        "Imagini legate": ["/imagine/catalog/platouri/2.webp",
+                           "/imagine/catalog/platouri/1.webp"     
+        ]
+      },
+      {
+        "categorie": "platouri",
+        "id": 3,
+        "nume": "Platou din lemn cu piciorușe",
+        "imagine": "/imagine/catalog/platouri/7.webp",
+        "pret": "209.99 MDL",
+        "descriere": " Platou cu formă abstractă și piciorușe din stejar ",
+        "dimensiuni": "50cm x 30 cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 4,
+        "nume": "Platou oval cu orificiu pentru sticlă și 2 pahare",
+        "imagine": "/imagine/catalog/platouri/10.webp",
+        "pret": "279.99 MDL",
+        "descriere": "Platou oval din stejar cu piciorușe și orificiu pentru pentru 2 pahare și o sticlă",
+        "dimensiuni": "50cm x 30 cm",
+        "Imagini legate": ["/imagine/catalog/platouri/11.webp",
+                           "/imagine/catalog/platouri/20240917_093541.webp"
+      ]
+      },
+      {
+        "categorie": "platouri",
+        "id": 5,
+        "nume": "Platou oval cu orificiu pentru 4 pahare",
+        "imagine": "/imagine/catalog/platouri/12.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou oval din stejar cu piciorușe și orificiu pentru 4 pahare",
+        "dimensiuni": "50cm x 30 cm",
+        "Imagini legate": "/imagine/catalog/platouri/13.webp"
+      },
+      {
+        "categorie": "platouri",
+        "id": 6,
+        "nume": "Platou rotund cu orificiu pentru 4 pahare",
+        "imagine": "/imagine/catalog/platouri/15.webp",
+        "pret": "200.00 MDL",
+        "descriere": "Platou rotund cu piciorușe și orificiu pentru 4 pahare",
+        "dimensiuni": "30cm x 30cm",
+        "Imagini legate": "/imagine/catalog/platouri/16.webp"
+      },
+      {
+        "categorie": "platouri",
+        "id": 23,
+        "nume": "Platou \"Moldova\" mic",
+        "imagine": "/imagine/catalog/platouri/40.webp",
+        "pret": "230.00 MDL",
+        "descriere": "Platou mic fără picioare sub forma hărții Republicii Moldova",
+        "dimensiuni": "30cm x 20cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 24,
+        "nume": "Platou \"Moldova\" mediu",
+        "imagine": "/imagine/catalog/platouri/41.webp",
+        "pret": "260.00 MDL",
+        "descriere": "Platou mediu fără picioare sub forma hărții Republicii Moldova",
+        "dimensiuni": "40cm x 30cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 25,
+        "nume": "Platou \"Moldova\" mare",
+        "imagine": "/imagine/catalog/platouri/42.webp",
+        "pret": "290.00 MDL",
+        "descriere": "Platou mare fără picioare cu 3 secțiuni sub forma hărții Republicii Moldova",
+        "dimensiuni": "50cm x 40cm",
+        "Imagini legate": ""
+      },
+      
+      {
+        "categorie": "platouri",
+        "id": 29,
+        "nume": "Platou octagonal",
+        "imagine": "/imagine/catalog/platouri/47.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou octagonal cu 5 secțiuni fără piciorușe în formă de octagon",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      { 
+        "categorie": "platouri",
+        "id": 7,
+        "nume": "Platou pătrat cu 4 secțiuni",
+        "imagine": "/imagine/catalog/platouri/18.webp",
+        "pret": "189.99 MDL",
+        "descriere": "Platou pătrat fără picioare cu 4 secțiuni",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 8,
+        "nume": "Platou dreptunghiular cu 5 secțiuni",
+        "imagine": "/imagine/catalog/platouri/19.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou dreptunghiular fără picioare cu 5 secțiuni",
+        "dimensiuni": "50cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 9,
+        "nume": "Platou dreptunghiular cu 4 inimi",
+        "imagine": "/imagine/catalog/platouri/20.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou dreptunghiular fără picioare cu 4 inimi",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 10,
+        "nume": "Platou format din 4 inimi",
+        "imagine": "/imagine/catalog/platouri/21.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare format din 4 inimi",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 11,
+        "nume": "Platou cu semilună",
+        "imagine": "/imagine/catalog/platouri/22.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare pe care e sculptat o semilună și o stea",
+        "dimensiuni": "35cm x 35cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 13,
+        "nume": "Platou frunză",
+        "imagine": "/imagine/catalog/platouri/23.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare într-o formă de frunză",
+        "dimensiuni": "40cm x 35cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 14,
+        "nume": "Platou fagure",
+        "imagine": "/imagine/catalog/platouri/24.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare cu 7 secțiuni într-o formă de fagure ",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 15,
+        "nume": "Platou frunză de stejar",
+        "imagine": "/imagine/catalog/platouri/25.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare într-o formă de frunză de stejar",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 16,
+        "nume": "Platou rotund fără picioare",
+        "imagine": "/imagine/catalog/platouri/26.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou rotund fără picioare cu 2 mânere și 6 secțiuni",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 17,
+        "nume": "Platou spic",
+        "imagine": "/imagine/catalog/platouri/27.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare în formă de spic de grâu",
+        "dimensiuni": "40cm x 30cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 19,
+        "nume": "Platou iepure",
+        "imagine": "/imagine/catalog/platouri/30.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare sub formă de cap de iepuraș",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 20,
+        "nume": "Platou cerb",
+        "imagine": "/imagine/catalog/platouri/31.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare sub formă de cap de cerb",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 21,
+        "nume": "Platou \"Mickey Mouse\"",
+        "imagine": "/imagine/catalog/platouri/32.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare sub forma faimosului personaj Mickey Mouse",
+        "dimensiuni": "40cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 22,
+        "nume": "Platou chitară",
+        "imagine": "/imagine/catalog/platouri/33.webp",
+        "pret": "250.00 MDL",
+        "descriere": "Platou fără picioare sub forma unei chitare",
+        "dimensiuni": "60cm x 40cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 26,
+        "nume": "Platou rotund simplu",
+        "imagine": "/imagine/catalog/platouri/43.webp",
+        "pret": "220.00 MDL",
+        "descriere": "Platou rotund simplu cu 2 mânere",
+        "dimensiuni": "35cm x 35cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 27,
+        "nume": "Platou pește mic",
+        "imagine": "/imagine/catalog/platouri/44.webp",
+        "pret": "200.00 MDL",
+        "descriere": "Platou mic fără piciorușe în formă de pește",
+        "dimensiuni": "25cm x 15cm",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "platouri",
+        "id": 28,
+        "nume": "Platou pește",
+        "imagine": "/imagine/catalog/platouri/46.webp",
+        "pret": "260.00 MDL",
+        "descriere": "Platou fără piciorușe în formă de pește",
+        "dimensiuni": "40cm x 30cm",
+        "Imagini legate": ""
+      }
+    ],
+
+    "Oale": [
+      {
+        "categorie": "oale",
+        "id": 1,
+        "nume": "Oală decorată cu spice de grâu",
+        "imagine": "/imagine/catalog/oale/spic.webp",
+        "pret": "240.00 MDL",
+        "descriere": "O oală decorată cu un spic de grâu",
+        "dimensiuni": "5L",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "oale",
+        "id": 2,
+        "nume": "Ulcior decorat cu viță de vie",
+        "imagine": "/imagine/catalog/oale/ulcior.webp",
+        "pret": "240.00 MDL",
+        "descriere": "Un ulcior decorat cu struguri și viță de vie pictate",
+        "dimensiuni": "1,2L",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "oale",
+        "id": 3,
+        "nume": "Oală decorată cu viță de vie",
+        "imagine": "/imagine/catalog/oale/vie.webp",
+        "pret": "260.00 MDL",
+        "descriere": "O oală decorată cu struguri și viță de vie pictate",
+        "dimensiuni": "4L",
+        "Imagini legate": ""
+      }
+    ],
+
+    "Vinoteca": [
+      {
+        "categorie": "vinoteca",
+        "id": 1,
+        "nume": "Vinotecă căruță cu orificiu pentru 4 pahare și o sticlă",
+        "imagine": "/imagine/catalog/Vinoteca/4.webp",
+        "pret": "500.00 MDL",
+        "descriere": "O vinotecă sub formă de căruță cu orificiu pentru 4 pahare și o sticlă.Textul poate fi personaizat prin mail !",
+        "dimensiuni": "",
+        "Imagini legate": ["/imagine/catalog/Vinoteca/1.webp",
+                           "/imagine/catalog/Vinoteca/5.webp"     
+         ]   
+      },
+      {
+        "categorie": "vinoteca",
+        "id": 2,
+        "nume": "Vinotecă chitară cu orificiu pentru 4 pahare și o sticlă",
+        "imagine": "/imagine/catalog/Vinoteca/2.webp",
+        "pret": "500.00 MDL",
+        "descriere": "O vinotecă sub formă de chitară cu orificiu pentru 8 pahare și 5 sticle. Textul poate fi personaizat prin mail !",
+        "dimensiuni": "",
+        "Imagini legate": "/imagine/catalog/Vinoteca/15.webp"
+      },
+      {
+        "categorie": "vinoteca",
+        "id": 3,
+        "nume": "Vinotecă butoi cu orificiu pentru 4 pahare și 6 sticle",
+        "imagine": "/imagine/catalog/Vinoteca/3.webp",
+        "pret": "500.00 MDL",
+        "descriere": "O vinotecă sub formă de butoi cu orificiu pentru 4 pahare și 6 sticle. Textul poate fi personaizat prin mail !",
+        "dimensiuni": "",
+        "Imagini legate": ""
+      },
+      {
+        "categorie": "vinoteca",
+        "id": 4,
+        "nume": "Vinotecă \"Moldova\" cu orificiu pentru 6 pahare și 6 sticle ",
+        "imagine": "/imagine/catalog/Vinoteca/10.webp",
+        "pret": "500.00 MDL",
+        "descriere": "O vinotecă albă sub forma hărții Republicii Moldova cu orificiu pentru 6 pahare și 6 sticle. Textul poate fi personaizat prin mail !",
+        "dimensiuni": "",
+        "Imagini legate": ["/imagine/catalog/Vinoteca/6.webp",
+                           "/imagine/catalog/Vinoteca/7.webp", 
+                           "/imagine/catalog/Vinoteca/8.webp",
+                           "/imagine/catalog/Vinoteca/9.webp"    
+        ]
+      },
+      {
+        "categorie": "vinoteca",
+        "id": 5,
+        "nume": "Vinotecă \"Moldova\" cu orificiu pentru 5 pahare și 5 sticle ",
+        "imagine": "/imagine/catalog/Vinoteca/13.webp",
+        "pret": "500.00 MDL",
+        "descriere": "O vinotecă neagră sub forma hărții Republicii Moldova cu orificiu pentru 5 pahare și 5 sticle. Textul poate fi personaizat prin mail !",
+        "dimensiuni": "",
+        "Imagini legate": ""        
+      }
+    ]
+  }
+}
+
+  
