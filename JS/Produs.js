@@ -99,7 +99,7 @@ function loadProductDetails() {
     return;
   }
 
-  fetch("/JSON\\items.json")
+  fetch("../JSON/items.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -202,7 +202,7 @@ class ProductPage {
     }
 
     try {
-      const response = await fetch("/JSON/items.json");
+      const response = await fetch("../JSON/items.json");
       const data = await response.json();
       this.product = this.findProductByIdAndCategory(data, productId, category);
 
