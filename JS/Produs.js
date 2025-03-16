@@ -74,7 +74,7 @@ function showNotification(product) {
             </div>
         </div>
         <div class="notification-actions">
-            <a href="/HTML/COS.html" class="view-cart" data-lang="notification-view-cart">Vezi coșul</a>
+            <a href="../HTML/COS.html" class="view-cart" data-lang="notification-view-cart">Vezi coșul</a>
         </div>
     `;
 
@@ -188,13 +188,13 @@ class ProductPage {
   }
 
   init() {
-    this.loadProductDetails();
     this.initializeCounter();
+    this.loadProductDetails();
   }
 
   async loadProductDetails() {
-    const productId = this.getUrlParameter("id");
-    const category = this.getUrlParameter("categorie");
+    const productId = getUrlParameter("id");
+    const category = getUrlParameter("categorie");
 
     if (!productId) {
       console.error("No product ID found in URL");
@@ -202,13 +202,25 @@ class ProductPage {
     }
 
     try {
+      console.log('Attempting to fetch:', '../JSON/items.json');
       const response = await fetch("../JSON/items.json");
+      console.log('Response status:', response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
-      this.product = this.findProductByIdAndCategory(data, productId, category);
+      console.log('Data loaded successfully');
+      this.product = findProductByIdAndCategory(data, productId, category);
 
       if (this.product) {
         this.updateProductUI();
         this.initializeAddToCart();
+      } else {
+        console.error(
+          `Product not found for ID ${productId}${
+            category ? ` in category ${category}` : ""
+          }`
+        );
       }
     } catch (error) {
       console.error("Error loading product details:", error);
@@ -357,7 +369,7 @@ class ProductPage {
                 </div>
             </div>
             <div class="notification-actions">
-                <a href="/HTML/COS.html" class="view-cart" data-lang="product-view-cart">Vezi coșul</a>
+                <a href="../HTML/COS.html" class="view-cart" data-lang="product-view-cart">Vezi coșul</a>
             </div>
         `;
 
