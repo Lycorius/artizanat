@@ -1,5 +1,5 @@
 function fetchAndRenderProducts(category = "Platouri", page = 1) {
-  fetch("/JSON/items.json")
+  fetch("../JSON/items.json")
     .then((response) => response.json())
     .then((data) => {
       const products = data.produse[category];
@@ -14,7 +14,7 @@ function fetchAndRenderProducts(category = "Platouri", page = 1) {
         const productDiv = document.createElement("div");
         productDiv.classList.add("product");
         productDiv.innerHTML = `
-                    <a href="/HTML/Produs.html?id=${product.id}&categorie=${product.categorie}">
+                    <a href="../HTML/Produs.html?id=${product.id}&categorie=${product.categorie}">
                         <img class="product-img" src="${product.imagine}" alt="${product.nume}" data-id="${product.id}">
                     </a>
                     <div class="products-content">
@@ -22,7 +22,7 @@ function fetchAndRenderProducts(category = "Platouri", page = 1) {
                         <div class="price-cart">
                             <span class="price">${product.pret}</span>
                             <button class="cart-icon" title="Adaugă în coș">
-                                <img src="/Icons/COȘ.svg" alt="Cart">
+                                <img src="../Icons/COȘ.svg" alt="Cart">
                             </button>
                         </div>
                     </div>
@@ -49,7 +49,7 @@ function renderPagination(category, totalProducts, currentPage) {
     const prevPage = document.createElement("span");
     prevPage.classList.add("prev-page");
     prevPage.innerHTML =
-      '<img src="/imagine/left-arrow.svg" alt="Previous Page">';
+      '<img src="../imagine/left-arrow.svg" alt="Previous Page">';
     prevPage.addEventListener("click", () =>
       fetchAndRenderProducts(category, currentPage - 1)
     );
@@ -70,7 +70,7 @@ function renderPagination(category, totalProducts, currentPage) {
   if (currentPage < totalPages) {
     const nextPage = document.createElement("span");
     nextPage.classList.add("next-page");
-    nextPage.innerHTML = '<img src="/imagine/Right-arrow.svg" alt="Next Page">';
+    nextPage.innerHTML = '<img src="../imagine/Right-arrow.svg" alt="Next Page">';
     nextPage.addEventListener("click", () =>
       fetchAndRenderProducts(category, currentPage + 1)
     );
@@ -95,7 +95,7 @@ function showNotification(product) {
             </div>
         </div>
         <div class="notification-actions">
-            <a href="/HTML/COS.html" class="view-cart" data-lang="notification-view-cart">Vezi coșul</a>
+            <a href="../HTML/COS.html" class="view-cart" data-lang="notification-view-cart">Vezi coșul</a>
         </div>
     `;
 

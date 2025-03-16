@@ -10,7 +10,7 @@ body {
 }
 
 .wrapper {
-  background: url("/imagine/Ellipse 22.webp") no-repeat center center / contain;
+  background: url("../imagine/Ellipse 22.webp") no-repeat center center / contain;
   background-position-y: 275px;
   width: auto;
   height: 735px;
