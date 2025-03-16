@@ -315,6 +315,9 @@ hr {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .social-link:hover {
@@ -324,7 +327,6 @@ hr {
 .social-link img {
   width: 24px;
   height: 24px;
-  translate: 0 2px;
 }
 
 @media screen and (max-width: 1160px) {

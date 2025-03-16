@@ -14,50 +14,69 @@ class Carousel {
       autoScrolling: true,
       touchStartX: 0,
       touchEndX: 0,
+      lastInteractionTime: 0
     };
 
-    this.elements = {
+    this.elements = this.initializeElements();
+    if (!this.elements.track) return;
+
+    this.setupCarousel();
+    this.bindEvents();
+    this.startAutoScroll();
+  }
+
+  initializeElements() {
+    return {
       track: document.querySelector(".carousel-track"),
       nextBtn: document.querySelector(".carousel-btn.next"),
       prevBtn: document.querySelector(".carousel-btn.prev"),
       indicators: document.querySelectorAll(".indicator"),
       slides: null,
-      slideWidth: null,
+      slideWidth: 0
     };
-
-    this.autoScrollTimer = null;
-    this.init();
   }
 
-  init() {
-    if (!this.elements.track) return;
-
+  setupCarousel() {
     this.elements.slides = Array.from(this.elements.track.children);
     this.elements.slideWidth = this.elements.slides[0].getBoundingClientRect().width;
-
+    
     this.setupInfiniteSlides();
-    this.bindEvents();
     this.updateUI();
-    this.toggleAutoScroll(true);
+    this.updateTransform(-this.state.currentIndex * this.elements.slideWidth, false);
+  }
+
+  setupInfiniteSlides() {
+    const cloneSlides = (slides, isStart = true) => {
+      return slides.map(slide => {
+        const clone = slide.cloneNode(true);
+        clone.classList.add("clone");
+        isStart ? this.elements.track.appendChild(clone) : 
+                 this.elements.track.insertBefore(clone, this.elements.track.firstChild);
+        return clone;
+      });
+    };
+
+    const startSlides = this.elements.slides.slice(0, CONFIG.SLIDE_SHOW);
+    const endSlides = this.elements.slides.slice(-CONFIG.SLIDE_SHOW);
+
+    cloneSlides(startSlides, true);
+    cloneSlides(endSlides.reverse(), false);
   }
 
   updateTransform(position, transition = true) {
     if (!this.elements.track) return;
 
-    this.elements.track.style.transition = transition
-      ? `transform ${CONFIG.TRANSITION_TIME}ms ease-in-out`
-      : "none";
+    this.elements.track.style.transition = transition ? 
+      `transform ${CONFIG.TRANSITION_TIME}ms ease-in-out` : "none";
     this.elements.track.style.transform = `translateX(${position}px)`;
   }
 
   updateUI() {
-    this.elements.slides.forEach((slide, i) =>
-      slide.classList.toggle("current-slide", i === this.state.currentIndex)
-    );
+    this.elements.slides.forEach((slide, i) => 
+      slide.classList.toggle("current-slide", i === this.state.currentIndex));
 
-    this.elements.indicators.forEach((indicator, i) =>
-      indicator.classList.toggle("active", i === (this.state.currentIndex - 2) % 5)
-    );
+    this.elements.indicators.forEach((indicator, i) => 
+      indicator.classList.toggle("active", i === (this.state.currentIndex - 2) % CONFIG.SLIDE_SHOW));
   }
 
   moveToSlide(index, smooth = true) {
@@ -65,6 +84,7 @@ class Carousel {
 
     this.state.isTransitioning = true;
     this.state.currentIndex = index;
+    this.state.lastInteractionTime = Date.now();
 
     this.updateTransform(-this.state.currentIndex * this.elements.slideWidth, smooth);
     this.updateUI();
@@ -82,35 +102,23 @@ class Carousel {
     this.state.isTransitioning = false;
   }
 
-  setupInfiniteSlides() {
-    const cloneSlides = (slides) => {
-      return slides.map((slide) => {
-        const clone = slide.cloneNode(true);
-        clone.classList.add("clone");
-        return clone;
-      });
-    };
-
-    const startClones = cloneSlides(this.elements.slides.slice(0, CONFIG.SLIDE_SHOW));
-    const endClones = cloneSlides(this.elements.slides.slice(-CONFIG.SLIDE_SHOW));
-
-    startClones.forEach((clone) => this.elements.track.appendChild(clone));
-    endClones.reverse().forEach((clone) => this.elements.track.insertBefore(clone, this.elements.track.firstChild));
-
-    this.updateTransform(-this.elements.slideWidth * CONFIG.SLIDE_SHOW, false);
-  }
-
-  toggleAutoScroll(enable) {
-    this.state.autoScrolling = enable;
-    clearTimeout(this.autoScrollTimer);
-    if (enable) this.autoScroll();
-  }
-
-  autoScroll() {
+  startAutoScroll() {
     if (!this.state.autoScrolling) return;
 
+    const now = Date.now();
+    if (now - this.state.lastInteractionTime < CONFIG.AUTO_PLAY_DELAY) {
+      requestAnimationFrame(() => this.startAutoScroll());
+      return;
+    }
+
     this.moveToSlide(this.state.currentIndex + 1, true);
-    this.autoScrollTimer = setTimeout(() => requestAnimationFrame(() => this.autoScroll()), CONFIG.AUTO_PLAY_DELAY);
+    setTimeout(() => requestAnimationFrame(() => this.startAutoScroll()), CONFIG.AUTO_PLAY_DELAY);
+  }
+
+  handleTouchStart(e) {
+    this.state.touchStartX = e.touches[0].clientX;
+    this.state.autoScrolling = false;
+    this.state.lastInteractionTime = Date.now();
   }
 
   handleTouchMove(e) {
@@ -119,34 +127,80 @@ class Carousel {
     this.state.touchEndX = e.touches[0].clientX;
     const diff = this.state.touchStartX - this.state.touchEndX;
 
-    this.updateTransform(-this.state.currentIndex * this.elements.slideWidth - diff, false);
+    // Добавляем сопротивление при свайпе
+    const resistance = 0.8;
+    const position = -this.state.currentIndex * this.elements.slideWidth - (diff * resistance);
+    this.updateTransform(position, false);
+  }
+
+  handleTouchEnd() {
+    const diff = this.state.touchStartX - this.state.touchEndX;
+    
+    if (Math.abs(diff) > CONFIG.SWIPE_THRESHOLD) {
+      this.moveToSlide(this.state.currentIndex + (diff > 0 ? 1 : -1));
+    } else {
+      this.moveToSlide(this.state.currentIndex);
+    }
+
+    setTimeout(() => {
+      this.state.autoScrolling = true;
+      this.startAutoScroll();
+    }, CONFIG.AUTO_PLAY_DELAY);
   }
 
   bindEvents() {
-    this.elements.track.addEventListener("touchstart", (e) => {
-      this.state.touchStartX = e.touches[0].clientX;
-      this.toggleAutoScroll(false);
-    }, { passive: true });
-
+    // Touch events
+    this.elements.track.addEventListener("touchstart", (e) => this.handleTouchStart(e), { passive: true });
     this.elements.track.addEventListener("touchmove", (e) => this.handleTouchMove(e), { passive: true });
+    this.elements.track.addEventListener("touchend", () => this.handleTouchEnd());
 
-    this.elements.track.addEventListener("touchend", () => {
-      const diff = this.state.touchStartX - this.state.touchEndX;
-      if (Math.abs(diff) > CONFIG.SWIPE_THRESHOLD) {
-        this.moveToSlide(this.state.currentIndex + (diff > 0 ? 1 : -1));
-      } else {
-        this.moveToSlide(this.state.currentIndex);
-      }
-      this.toggleAutoScroll(true);
+    // Transition end
+    this.elements.track.addEventListener("transitionend", () => this.handleInfiniteScroll());
+
+    // Navigation buttons
+    this.elements.nextBtn?.addEventListener("click", () => {
+      this.state.lastInteractionTime = Date.now();
+      this.moveToSlide(this.state.currentIndex + 1);
     });
 
-    this.elements.track.addEventListener("transitionend", () => this.handleInfiniteScroll());
-    this.elements.nextBtn?.addEventListener("click", () => this.moveToSlide(this.state.currentIndex + 1));
-    this.elements.prevBtn?.addEventListener("click", () => this.moveToSlide(this.state.currentIndex - 1));
-    this.elements.indicators.forEach((indicator, i) => indicator.addEventListener("click", () => this.moveToSlide(i + 2)));
+    this.elements.prevBtn?.addEventListener("click", () => {
+      this.state.lastInteractionTime = Date.now();
+      this.moveToSlide(this.state.currentIndex - 1);
+    });
 
-    this.elements.track.addEventListener("mouseenter", () => this.toggleAutoScroll(false));
-    this.elements.track.addEventListener("mouseleave", () => this.toggleAutoScroll(true));
+    // Indicators
+    this.elements.indicators.forEach((indicator, i) => {
+      indicator.addEventListener("click", () => {
+        this.state.lastInteractionTime = Date.now();
+        this.moveToSlide(i + 2);
+      });
+    });
+
+    // Mouse enter/leave
+    this.elements.track.addEventListener("mouseenter", () => {
+      this.state.autoScrolling = false;
+    });
+
+    this.elements.track.addEventListener("mouseleave", () => {
+      this.state.autoScrolling = true;
+      this.startAutoScroll();
+    });
+
+    // Visibility change
+    document.addEventListener("visibilitychange", () => {
+      this.state.autoScrolling = !document.hidden;
+      if (!document.hidden) this.startAutoScroll();
+    });
+
+    // Window resize
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        this.elements.slideWidth = this.elements.slides[0].getBoundingClientRect().width;
+        this.updateTransform(-this.state.currentIndex * this.elements.slideWidth, false);
+      }, 250);
+    });
   }
 }
 
@@ -154,21 +208,22 @@ class LanguageManager {
   constructor(translations) {
     this.translations = translations;
     this.currentLang = localStorage.getItem("language") || "ro";
+    this.selectors = {
+      desktop: document.getElementById("language"),
+      mobile: document.getElementById("language-mobile")
+    };
     this.init();
   }
 
   init() {
-    const desktopSelector = document.getElementById("language");
-    const mobileSelector = document.getElementById("language-mobile");
-
-    if (desktopSelector) {
-      desktopSelector.value = this.currentLang;
-      desktopSelector.addEventListener("change", (e) => this.changeLanguage(e.target.value));
+    if (this.selectors.desktop) {
+      this.selectors.desktop.value = this.currentLang;
+      this.selectors.desktop.addEventListener("change", (e) => this.changeLanguage(e.target.value));
     }
 
-    if (mobileSelector) {
-      mobileSelector.value = this.currentLang;
-      mobileSelector.addEventListener("change", (e) => this.changeLanguage(e.target.value));
+    if (this.selectors.mobile) {
+      this.selectors.mobile.value = this.currentLang;
+      this.selectors.mobile.addEventListener("change", (e) => this.changeLanguage(e.target.value));
     }
 
     this.updateContent();
@@ -178,25 +233,24 @@ class LanguageManager {
     this.currentLang = lang;
     localStorage.setItem("language", lang);
 
-    const desktopSelector = document.getElementById("language");
-    const mobileSelector = document.getElementById("language-mobile");
-
-    if (desktopSelector) desktopSelector.value = lang;
-    if (mobileSelector) mobileSelector.value = lang;
+    Object.values(this.selectors).forEach(selector => {
+      if (selector) selector.value = lang;
+    });
 
     this.updateContent();
     window.dispatchEvent(new Event("languageChanged"));
   }
 
   updateContent() {
-    document.querySelectorAll("[data-lang]").forEach((element) => {
+    const currentTranslations = this.translations[this.currentLang];
+    
+    document.querySelectorAll("[data-lang]").forEach(element => {
       const key = element.getAttribute("data-lang");
-      element.textContent = this.translations[this.currentLang][key] || key;
+      element.textContent = currentTranslations[key] || key;
     });
 
-    document.querySelectorAll("[data-currency]").forEach((element) => {
-      const currencyMap = { ro: "MDL", ru: "MDL", en: "MDL" };
-      element.textContent = currencyMap[this.currentLang];
+    document.querySelectorAll("[data-currency]").forEach(element => {
+      element.textContent = "MDL";
     });
   }
 }
@@ -495,7 +549,7 @@ const translations = {
     "footer-catalog": "Каталог",
     "footer-about": "О нас",
     "footer-services": "Услуги",
-    "footer-contact": "АРТИЗАНАТ КАХУЛ",
+    "footer-contact": "ARTIZANAT CAHUL",
     "footer-phone": "+(373) 60 132 630",
     "footer-address": 'Кахул, Торговый центр "Глобус", ул. 31 Августа 13Б',
     "cart-title": "Моя корзина",
