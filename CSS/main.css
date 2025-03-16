@@ -429,3 +429,56 @@ hr {
     gap: 20px;
   }
 }
+
+.error-message {
+  color: var(--red);
+  font-size: 12px;
+  margin-top: 4px;
+  display: none;
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+  border-color: var(--red);
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  background: var(--primary-color);
+  color: var(--white);
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification.error {
+  background: var(--red);
+}
+
+.notification.success {
+  background: #28a745;
+}
+
+@media screen and (max-width: 768px) {
+  .notification {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    transform: translateY(100%);
+  }
+
+  .notification.show {
+    transform: translateY(0);
+  }
+}
