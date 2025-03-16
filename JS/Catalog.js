@@ -1,7 +1,15 @@
 function fetchAndRenderProducts(category = "Platouri", page = 1) {
   fetch("../JSON/items.json")
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => {
+      if (!data || !data.produse || !data.produse[category]) {
+        throw new Error('Invalid JSON structure or missing data');
+      }
       const products = data.produse[category];
       const productsPerPage = 12;
       const startIndex = (page - 1) * productsPerPage;
@@ -36,7 +44,13 @@ function fetchAndRenderProducts(category = "Platouri", page = 1) {
 
       renderPagination(category, products.length, page);
     })
-    .catch((error) => console.error("Error loading JSON data:", error));
+    .catch((error) => {
+      console.error("Error loading JSON data:", error);
+      const container = document.getElementById("product-container");
+      if (container) {
+        container.innerHTML = `<div class="error-message">Error loading products. Please try again later.</div>`;
+      }
+    });
 }
 
 function renderPagination(category, totalProducts, currentPage) {
@@ -49,7 +63,7 @@ function renderPagination(category, totalProducts, currentPage) {
     const prevPage = document.createElement("span");
     prevPage.classList.add("prev-page");
     prevPage.innerHTML =
-      '<img src="../imagine/left-arrow.svg" alt="Previous Page">';
+      '<img src="../Icons/Left-arrow.svg" alt="Previous Page">';
     prevPage.addEventListener("click", () =>
       fetchAndRenderProducts(category, currentPage - 1)
     );
@@ -70,7 +84,7 @@ function renderPagination(category, totalProducts, currentPage) {
   if (currentPage < totalPages) {
     const nextPage = document.createElement("span");
     nextPage.classList.add("next-page");
-    nextPage.innerHTML = '<img src="../imagine/Right-arrow.svg" alt="Next Page">';
+    nextPage.innerHTML = '<img src="../Icons/Right-arrow.svg" alt="Next Page">';
     nextPage.addEventListener("click", () =>
       fetchAndRenderProducts(category, currentPage + 1)
     );
